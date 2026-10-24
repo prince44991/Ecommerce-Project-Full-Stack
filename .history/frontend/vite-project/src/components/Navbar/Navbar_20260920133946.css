@@ -1,0 +1,353 @@
+.soleva-navbar {
+	position: relative;
+	z-index: 1030;
+	box-shadow: 0 2px 12px rgba(22, 28, 36, 0.04);
+}
+
+.soleva-navbar-inner {
+	min-height: 74px;
+	display: grid;
+	grid-template-columns: auto auto minmax(280px, 1fr) auto;
+	align-items: center;
+	gap: 28px;
+	max-width: 1440px;
+	padding: 0 32px;
+}
+
+.soleva-menu-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+	color: #1b1f24;
+	font-size: 1.35rem;
+}
+
+.soleva-menu-button:hover,
+.soleva-action-link:hover,
+.soleva-cart:hover {
+	color: #9a6b3d;
+}
+
+.soleva-brand {
+	display: inline-flex;
+	align-items: center;
+	gap: 9px;
+	color: #16191d;
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+.soleva-brand-mark {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 34px;
+	height: 34px;
+	border: 1px solid #16191d;
+	border-radius: 50%;
+	font-size: 1.05rem;
+	transform: rotate(-18deg);
+}
+
+.soleva-brand-name {
+	font-size: 1.2rem;
+	font-weight: 700;
+	letter-spacing: 0.2em;
+}
+
+.soleva-nav-links {
+	display: flex;
+	align-items: center;
+	gap: 22px;
+}
+
+.soleva-nav-links a {
+	position: relative;
+	padding: 27px 0 25px;
+	color: #59616b;
+	font-size: 0.84rem;
+	font-weight: 600;
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+.soleva-nav-links a:hover,
+.soleva-nav-links a.active {
+	color: #16191d;
+}
+
+.soleva-nav-links a.active::after {
+	position: absolute;
+	bottom: 18px;
+	left: 0;
+	width: 100%;
+	height: 2px;
+	background: #16191d;
+	content: '';
+}
+
+.soleva-offer-link {
+	color: #a05d3e !important;
+}
+
+.soleva-search {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	max-width: 460px;
+	min-width: 220px;
+	height: 42px;
+	margin: 0 auto;
+	padding: 0 12px;
+	border: 1px solid #dfe3e7;
+	border-radius: 4px;
+	background: #fafafa;
+}
+
+.soleva-search:focus-within {
+	border-color: #9a6b3d;
+	background: #fff;
+	box-shadow: 0 0 0 3px rgba(154, 107, 61, 0.1);
+}
+
+.soleva-search > i {
+	color: #68717d;
+	font-size: 0.95rem;
+}
+
+.soleva-search input {
+	width: 100%;
+	min-width: 0;
+	border: 0;
+	outline: 0;
+	padding: 0 10px;
+	color: #16191d;
+	background: transparent;
+	font-size: 0.78rem;
+}
+
+.soleva-search input::placeholder {
+	color: #8a929c;
+}
+
+.soleva-search button {
+	display: none;
+}
+
+.soleva-actions {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 18px;
+}
+
+.soleva-action-link,
+.soleva-cart {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	color: #252a30;
+	text-decoration: none;
+}
+
+.soleva-action-link i,
+.soleva-cart i {
+	font-size: 1.15rem;
+}
+
+.soleva-login span,
+.soleva-cart-label {
+	font-size: 0.78rem;
+	font-weight: 600;
+}
+
+.soleva-cart {
+	position: relative;
+}
+
+.soleva-cart-count {
+	position: absolute;
+	top: -10px;
+	right: -11px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 17px;
+	height: 17px;
+	border-radius: 50%;
+	background: #a05d3e;
+	color: #fff;
+	font-size: 0.62rem;
+	font-weight: 700;
+}
+
+.soleva-mobile-search {
+	display: none;
+}
+
+.soleva-sidebar {
+	width: min(86vw, 360px);
+	border: 0;
+	box-shadow: 16px 0 35px rgba(17, 24, 39, 0.16);
+}
+
+.soleva-sidebar-header {
+	min-height: 74px;
+	padding: 0 24px;
+	background: #16191d;
+}
+
+.soleva-sidebar-header .soleva-brand {
+	color: #fff;
+}
+
+.soleva-sidebar-header .soleva-brand-mark {
+	border-color: #fff;
+}
+
+.soleva-sidebar-body {
+	padding: 30px 24px;
+}
+
+.soleva-sidebar-label {
+	margin: 0 0 12px;
+	color: #8a929c;
+	font-size: 0.68rem;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+}
+
+.soleva-sidebar-links {
+	display: grid;
+	gap: 4px;
+}
+
+.soleva-sidebar-links a {
+	display: flex;
+	align-items: center;
+	gap: 13px;
+	padding: 12px 14px;
+	border-radius: 4px;
+	color: #363d45;
+	font-size: 0.9rem;
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.soleva-sidebar-links a i {
+	width: 18px;
+	color: #8a929c;
+	font-size: 1rem;
+	text-align: center;
+}
+
+.soleva-sidebar-links a:hover,
+.soleva-sidebar-links a.active {
+	background: #f5f1ed;
+	color: #8b5e36;
+}
+
+.soleva-sidebar-links a:hover i,
+.soleva-sidebar-links a.active i {
+	color: #8b5e36;
+}
+
+.soleva-sidebar-promo {
+	display: grid;
+	gap: 8px;
+	margin-top: 34px;
+	padding: 18px;
+	background: #f5f1ed;
+	color: #5c4431;
+	font-size: 0.82rem;
+}
+
+.soleva-sidebar-promo span {
+	font-weight: 600;
+}
+
+.soleva-sidebar-promo a {
+	color: #8b5e36;
+	font-size: 0.76rem;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+@media (max-width: 1199.98px) {
+	.soleva-navbar-inner {
+		grid-template-columns: auto auto minmax(200px, 1fr) auto;
+		gap: 18px;
+		padding: 0 22px;
+	}
+
+	.soleva-nav-links {
+		gap: 14px;
+	}
+
+	.soleva-nav-links a {
+		font-size: 0.76rem;
+	}
+
+	.soleva-actions {
+		gap: 13px;
+	}
+}
+
+@media (max-width: 991.98px) {
+	.soleva-navbar-inner {
+		grid-template-columns: auto 1fr auto;
+		gap: 16px;
+		min-height: 68px;
+		padding: 0 18px;
+	}
+
+	.soleva-menu-button {
+		display: inline-flex;
+	}
+
+	.soleva-nav-links,
+	.soleva-search,
+	.soleva-desktop-action,
+	.soleva-login,
+	.soleva-cart-label {
+		display: none;
+	}
+
+	.soleva-brand {
+		justify-self: start;
+	}
+
+	.soleva-actions {
+		gap: 16px;
+	}
+
+	.soleva-mobile-search {
+		display: inline-flex;
+	}
+
+	.soleva-cart-count {
+		top: -8px;
+	}
+}
+
+@media (max-width: 380px) {
+	.soleva-navbar-inner {
+		gap: 10px;
+		padding: 0 12px;
+	}
+
+	.soleva-brand-name {
+		font-size: 1.03rem;
+	}
+
+	.soleva-brand-mark {
+		width: 30px;
+		height: 30px;
+	}
+
+	.soleva-actions {
+		gap: 11px;
+	}
+}

@@ -1,0 +1,85 @@
+<!-- @format -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Simple JS Cart</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      .product {
+        margin-bottom: 10px;
+      }
+      button {
+        padding: 5px 10px;
+        cursor: pointer;
+      }
+      #cart-display {
+        margin-top: 20px;
+        font-weight: bold;
+        background: #f0f0f0;
+        padding: 10px;
+        inline-size: fit-content;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Products</h2>
+
+    <!-- 1. हमारे HTML Buttons, जिनमें 'data-id' एट्रिब्यूट है -->
+    <div class="product">
+      <span>👕 T-Shirt (₹500)</span>
+      <button class="add-to-cart-btn" data-id="tshirt">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <span>👟 Shoes (₹2000)</span>
+      <button class="add-to-cart-btn" data-id="shoes">Add to Cart</button>
+    </div>
+
+    <!-- 2. यहाँ हमारा कार्ट लाइव दिखाई देगा -->
+    <div id="cart-display">Cart: Empty</div>
+
+    <script>
+      // 3. खाली कार्ट ऑब्जेक्ट बनाया
+      let cartItems = {};
+
+      // 4. स्क्रीन पर कार्ट का डेटा दिखाने वाला फंक्शन
+      function updateCartDisplay() {
+        const display = document.getElementById("cart-display");
+
+        // अगर कार्ट खाली है
+        if (Object.keys(cartItems).length === 0) {
+          display.innerText = "Cart: Empty";
+          return;
+        }
+
+        // कार्ट के आइटम्स को स्क्रीन पर टेक्स्ट के रूप में दिखाना
+        display.innerHTML =
+          "<strong>Your Cart:</strong><br>" +
+          Object.entries(cartItems)
+            .map(([id, quantity]) => `${id}: ${quantity} items`)
+            .join("<br>");
+      }
+
+      // 5. सभी Buttons को सेलेक्ट करना और उनपर Click Event लगाना
+      const buttons = document.querySelectorAll(".add-to-cart-btn");
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", (event) => {
+          // बटन से उसकी Item ID निकालना (tshirt या shoes)
+          const itemId = event.target.getAttribute("data-id");
+
+          // आपका वही पसंदीदा JS लॉजिक जो क्वांटिटी बढ़ाता है
+          cartItems[itemId] = (cartItems[itemId] || 0) + 1;
+
+          // स्क्रीन को अपडेट करना ताकि यूजर को बदलाव दिखे
+          updateCartDisplay();
+        });
+      });
+    </script>
+  </body>
+</html>

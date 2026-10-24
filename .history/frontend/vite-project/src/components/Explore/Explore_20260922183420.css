@@ -1,0 +1,33 @@
+.img-contanir{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 24px;
+    width: 100%;
+    padding: 24px 50px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    
+}
+.img-contanir::-webkit-scrollbar{
+    display: none;
+}
+.img-list{
+    display: flex;
+    flex: 0 0 130px;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+    
+} 
+.images{
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.texts{
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+}

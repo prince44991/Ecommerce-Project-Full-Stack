@@ -1,0 +1,31 @@
+<!-- @format -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>App</title>
+  </head>
+  <body>
+    <div>
+      <button onclick="addToCart()">Shoes Add Karein</button>
+    </div>
+
+    <script>
+      let cartitems = {
+        tshirt: 3,
+        iphone: 2,
+      };
+
+      function addToCart() {
+        let itemid = "tshirt";
+
+        cartitems[itemid] = (cartitems[itemid] || 0) + 1;
+
+        console.log("update your card", cartitems);
+      }
+    </script>
+  </body>
+</html>

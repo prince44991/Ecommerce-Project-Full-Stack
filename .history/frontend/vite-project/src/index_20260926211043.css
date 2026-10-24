@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f8f5ff 0%, #eef6ff 100%);
+  color: #1f2937;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+}
+
+.food-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 200px));
+  gap: 1.5rem;
+  padding-inline: 1rem;
+  justify-content: center;
+  align-items: stretch;
+}
+
+@media (max-width: 560px) {
+  .food-display {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+

@@ -1,0 +1,30 @@
+/** @format */
+
+import img1 from "../assets/shoesone.webp";
+import img2 from "../assets/shoestwo.webp";
+import img3 from "../assets/photothree.jpg";
+import img4 from "../assets/photofour.jpg";
+const Img = [
+  {
+    id: 1,
+    image: img1,
+    text: "prince",
+  },
+  {
+    id: 2,
+    image: img2,
+    text: "prince",
+  },
+  {
+    id: 3,
+    image: img3,
+    text: "prince",
+  },
+  {
+    id: 4,
+    image: img4,
+    text: "prince",
+  },
+];
+
+module.exports = Img;

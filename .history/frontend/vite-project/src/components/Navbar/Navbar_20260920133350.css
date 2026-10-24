@@ -1,0 +1,159 @@
+.store-navbar {
+	position: relative;
+	z-index: 1030;
+}
+
+.navbar-container {
+	min-height: 76px;
+	display: flex;
+	align-items: center;
+}
+
+.navbar-logo {
+	width: 44px;
+	height: 44px;
+	object-fit: cover;
+	border-radius: 10px;
+}
+
+.navbar-search {
+	max-width: 420px;
+	width: 100%;
+}
+
+.navbar-brand {
+	white-space: nowrap;
+	color: #172033;
+}
+
+.navbar-brand:hover {
+	color: #0d6efd;
+}
+
+.navbar-collapse {
+	flex-grow: 1;
+	align-items: center;
+}
+
+.navbar-nav .nav-link {
+	padding: 0.55rem 0.8rem;
+	color: #4b5563;
+	font-weight: 500;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+	color: #0d6efd;
+}
+
+.navbar-menu-button {
+	display: none;
+}
+
+.cart-button {
+	min-width: 72px;
+}
+
+.store-sidebar {
+	width: min(86vw, 350px);
+	border: 0;
+	box-shadow: 12px 0 32px rgba(17, 24, 39, 0.14);
+}
+
+.sidebar-header {
+	min-height: 76px;
+	padding: 1rem 1.25rem;
+	background: #172033;
+}
+
+.sidebar-header a {
+	color: #fff !important;
+}
+
+.sidebar-body {
+	padding: 1.5rem 1.25rem;
+	background: #fff;
+}
+
+.sidebar-label {
+	margin: 0.25rem 0 0.65rem;
+	color: #8a94a6;
+	font-size: 0.72rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.sidebar-links a,
+.sidebar-category {
+	display: block;
+	padding: 0.65rem 0.75rem;
+	border-radius: 0.5rem;
+	color: #212529;
+	text-decoration: none;
+	font-weight: 500;
+}
+
+.sidebar-links a:hover,
+.sidebar-category:hover {
+	background-color: #f1f3f5;
+	color: #0d6efd;
+}
+
+@media (max-width: 991.98px) {
+	.navbar-container {
+		flex-wrap: wrap;
+		padding-top: 0.75rem;
+		padding-bottom: 0.75rem;
+	}
+
+	.navbar-menu-button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.navbar-brand {
+		margin-right: 0;
+	}
+
+	.navbar-collapse {
+		flex-basis: 100%;
+		margin-top: 0.9rem;
+		padding-top: 0.9rem;
+		border-top: 1px solid #e9ecef;
+	}
+
+	.navbar-search {
+		max-width: none;
+		margin-top: 0 !important;
+	}
+
+	.navbar-actions {
+		width: 100%;
+	}
+
+	.navbar-actions .btn {
+		flex: 1;
+	}
+}
+
+@media (max-width: 575.98px) {
+	.navbar-container {
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+
+	.navbar-logo {
+		width: 40px;
+		height: 40px;
+	}
+
+	.navbar-brand span {
+		font-size: 0.95rem;
+	}
+
+	.navbar-search .form-control {
+		min-width: 0;
+	}
+}

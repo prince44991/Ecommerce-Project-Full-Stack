@@ -1,0 +1,724 @@
+<!-- @format -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced Navbar - HTML & CSS</title>
+    <style>
+      /* ========== RESET & VARIABLES ========== */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary: #6366f1;
+        --secondary: #a855f7;
+        --accent: #ec4899;
+        --text: #f8fafc;
+        --text-muted: #cbd5e1;
+        --glass: rgba(255, 255, 255, 0.08);
+        --glass-border: rgba(255, 255, 255, 0.15);
+        --radius: 12px;
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      body {
+        font-family:
+          "Segoe UI",
+          system-ui,
+          -apple-system,
+          sans-serif;
+        background: linear-gradient(
+          135deg,
+          #0f172a 0%,
+          #1e1b4b 50%,
+          #312e81 100%
+        );
+        min-height: 200vh;
+        color: var(--text);
+      }
+
+      /* ========== NAVBAR ========== */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        background: var(--glass);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--glass-border);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+      }
+
+      .nav-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 24px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      /* ========== LOGO ========== */
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        font-size: 1.5rem;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+      }
+
+      .logo-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        display: grid;
+        place-items: center;
+        font-size: 1.2rem;
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.5);
+        transition: var(--transition);
+      }
+
+      .logo:hover .logo-icon {
+        transform: rotate(-10deg) scale(1.1);
+      }
+
+      .logo-text {
+        background: linear-gradient(90deg, #818cf8, #e879f9);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      /* ========== NAV LINKS ========== */
+      .nav-menu {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        list-style: none;
+      }
+
+      .nav-item {
+        position: relative;
+      }
+
+      .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 10px 16px;
+        color: var(--text-muted);
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 500;
+        border-radius: 8px;
+        position: relative;
+        transition: var(--transition);
+      }
+
+      /* Animated underline */
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: 4px;
+        left: 16px;
+        right: 16px;
+        height: 2px;
+        background: linear-gradient(90deg, var(--primary), var(--accent));
+        border-radius: 2px;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.35s ease;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+
+      .nav-link .arrow {
+        width: 8px;
+        height: 8px;
+        border-right: 2px solid currentColor;
+        border-bottom: 2px solid currentColor;
+        transform: rotate(45deg) translateY(-2px);
+        transition: var(--transition);
+      }
+
+      .nav-item:hover .arrow {
+        transform: rotate(-135deg) translateY(-2px);
+      }
+
+      /* ========== DROPDOWN ========== */
+      .dropdown {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        min-width: 240px;
+        background: rgba(30, 27, 75, 0.95);
+        backdrop-filter: blur(20px);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--radius);
+        padding: 8px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        list-style: none;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(12px);
+        transition: var(--transition);
+      }
+
+      /* Invisible bridge so hover doesn't break */
+      .dropdown::before {
+        content: "";
+        position: absolute;
+        top: -12px;
+        left: 0;
+        right: 0;
+        height: 12px;
+      }
+
+      .nav-item:hover .dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .dropdown a {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 12px;
+        color: var(--text-muted);
+        text-decoration: none;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        transition: var(--transition);
+      }
+
+      .dropdown a:hover {
+        background: linear-gradient(
+          90deg,
+          rgba(99, 102, 241, 0.25),
+          rgba(236, 72, 153, 0.15)
+        );
+        color: var(--text);
+        padding-left: 18px;
+      }
+
+      .dropdown .icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.08);
+        display: grid;
+        place-items: center;
+        font-size: 1rem;
+      }
+
+      .dropdown small {
+        display: block;
+        font-size: 0.75rem;
+        opacity: 0.6;
+      }
+
+      /* ========== RIGHT ACTIONS ========== */
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      /* Expanding search */
+      .search {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+
+      .search input {
+        width: 40px;
+        height: 40px;
+        padding: 0 40px 0 14px;
+        border: 1px solid transparent;
+        border-radius: 40px;
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--text);
+        outline: none;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .search input::placeholder {
+        color: transparent;
+      }
+
+      .search input:focus,
+      .search:hover input {
+        width: 220px;
+        cursor: text;
+        border-color: var(--glass-border);
+        background: rgba(255, 255, 255, 0.12);
+        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+      }
+
+      .search input:focus::placeholder {
+        color: var(--text-muted);
+      }
+
+      .search svg {
+        position: absolute;
+        right: 12px;
+        width: 18px;
+        height: 18px;
+        stroke: var(--text-muted);
+        pointer-events: none;
+      }
+
+      /* Icon buttons */
+      .icon-btn {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--text-muted);
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .icon-btn:hover {
+        background: rgba(255, 255, 255, 0.16);
+        color: var(--text);
+        transform: translateY(-2px);
+      }
+
+      .icon-btn svg {
+        width: 20px;
+        height: 20px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 2;
+      }
+
+      .badge {
+        position: absolute;
+        top: 6px;
+        right: 6px;
+        width: 9px;
+        height: 9px;
+        background: var(--accent);
+        border-radius: 50%;
+        border: 2px solid #1e1b4b;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.6);
+        }
+        70% {
+          box-shadow: 0 0 0 8px rgba(236, 72, 153, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(236, 72, 153, 0);
+        }
+      }
+
+      /* CTA button */
+      .btn-primary {
+        padding: 10px 22px;
+        border: none;
+        border-radius: 40px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: #fff;
+        font-weight: 600;
+        font-size: 0.9rem;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition: var(--transition);
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+      }
+
+      .btn-primary::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transition: 0.5s;
+      }
+
+      .btn-primary:hover::before {
+        left: 100%;
+      }
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(99, 102, 241, 0.6);
+      }
+
+      /* Profile */
+      .profile {
+        position: relative;
+      }
+
+      .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #f59e0b, #ef4444);
+        display: grid;
+        place-items: center;
+        font-weight: 700;
+        font-size: 0.85rem;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: var(--transition);
+      }
+
+      .avatar:hover,
+      .profile:hover .avatar {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.25);
+      }
+
+      .profile .dropdown {
+        left: auto;
+        right: 0;
+        min-width: 200px;
+      }
+      .profile:hover .dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .profile .dropdown hr {
+        border: none;
+        border-top: 1px solid var(--glass-border);
+        margin: 6px 0;
+      }
+      .profile .dropdown .logout {
+        color: #f87171;
+      }
+
+      /* ========== HAMBURGER (mobile) ========== */
+      .menu-toggle {
+        display: none;
+      }
+
+      .hamburger {
+        display: none;
+        width: 42px;
+        height: 42px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.08);
+        cursor: pointer;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        transition: var(--transition);
+      }
+
+      .hamburger span {
+        width: 22px;
+        height: 2px;
+        background: var(--text);
+        border-radius: 2px;
+        transition: var(--transition);
+      }
+
+      .menu-toggle:checked ~ .hamburger span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .menu-toggle:checked ~ .hamburger span:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(0);
+      }
+      .menu-toggle:checked ~ .hamburger span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      /* ========== RESPONSIVE ========== */
+      @media (max-width: 992px) {
+        .hamburger {
+          display: flex;
+        }
+
+        .nav-menu {
+          position: fixed;
+          top: 70px;
+          left: 0;
+          width: 100%;
+          height: calc(100vh - 70px);
+          flex-direction: column;
+          align-items: stretch;
+          gap: 4px;
+          padding: 20px 24px;
+          background: rgba(15, 23, 42, 0.97);
+          backdrop-filter: blur(20px);
+          transform: translateX(-100%);
+          transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          overflow-y: auto;
+        }
+
+        .menu-toggle:checked ~ .nav-menu {
+          transform: translateX(0);
+        }
+
+        .nav-link {
+          padding: 14px 16px;
+          font-size: 1.05rem;
+        }
+        .nav-link::after {
+          display: none;
+        }
+
+        /* Dropdown becomes inline on mobile */
+        .dropdown {
+          position: static;
+          opacity: 1;
+          visibility: visible;
+          transform: none;
+          background: rgba(255, 255, 255, 0.04);
+          box-shadow: none;
+          margin: 4px 0 8px 16px;
+          max-height: 0;
+          overflow: hidden;
+          padding: 0 8px;
+          border: none;
+          transition:
+            max-height 0.4s ease,
+            padding 0.3s ease;
+        }
+
+        .nav-item:hover .dropdown,
+        .nav-item:focus-within .dropdown {
+          max-height: 500px;
+          padding: 8px;
+        }
+
+        .search,
+        .btn-primary {
+          display: none;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .logo-text {
+          display: none;
+        }
+        .nav-container {
+          padding: 0 16px;
+        }
+      }
+
+      /* ========== DEMO CONTENT ========== */
+      .hero {
+        padding: 160px 24px 80px;
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: clamp(2rem, 6vw, 4rem);
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 20px;
+        background: linear-gradient(90deg, #fff, #c7d2fe);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .hero p {
+        color: var(--text-muted);
+        font-size: 1.15rem;
+        line-height: 1.7;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <!-- Logo -->
+        <a href="#" class="logo">
+          <span class="logo-icon">⚡</span>
+          <span class="logo-text">Nexus</span>
+        </a>
+
+        <!-- Hamburger checkbox trick (no JS) -->
+        <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+
+        <!-- Nav Links -->
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link"
+              >Products <span class="arrow"></span
+            ></a>
+            <ul class="dropdown">
+              <li>
+                <a href="#"
+                  ><span class="icon">🎨</span>
+                  <div>Design Tools<small>UI kits & templates</small></div></a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><span class="icon">📊</span>
+                  <div>Analytics<small>Track your metrics</small></div></a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><span class="icon">🔐</span>
+                  <div>Security<small>Protect your data</small></div></a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><span class="icon">☁️</span>
+                  <div>Cloud<small>Scalable hosting</small></div></a
+                >
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link"
+              >Resources <span class="arrow"></span
+            ></a>
+            <ul class="dropdown">
+              <li>
+                <a href="#"
+                  ><span class="icon">📚</span>
+                  <div>Documentation<small>Guides & API refs</small></div></a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><span class="icon">✍️</span>
+                  <div>Blog<small>Latest updates</small></div></a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><span class="icon">🎓</span>
+                  <div>Tutorials<small>Learn step by step</small></div></a
+                >
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+        </ul>
+
+        <!-- Right Actions -->
+        <div class="nav-actions">
+          <!-- Expanding Search -->
+          <div class="search">
+            <input type="text" placeholder="Search..." />
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+            </svg>
+          </div>
+
+          <!-- Notifications -->
+          <button class="icon-btn" aria-label="Notifications">
+            <svg
+              viewBox="0 0 24 24"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
+              <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
+            </svg>
+            <span class="badge"></span>
+          </button>
+
+          <!-- CTA -->
+          <button class="btn-primary">Get Started</button>
+
+          <!-- Profile with dropdown -->
+          <div class="profile">
+            <div class="avatar">JD</div>
+            <ul class="dropdown">
+              <li>
+                <a href="#"><span class="icon">👤</span>My Profile</a>
+              </li>
+              <li>
+                <a href="#"><span class="icon">⚙️</span>Settings</a>
+              </li>
+              <li>
+                <a href="#"><span class="icon">💳</span>Billing</a>
+              </li>
+              <hr />
+              <li>
+                <a href="#" class="logout"
+                  ><span class="icon">🚪</span>Logout</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Hamburger -->
+          <label for="menu-toggle" class="hamburger">
+            <span></span><span></span><span></span>
+          </label>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ========== DEMO CONTENT ========== -->
+    <section class="hero">
+      <h1>Advanced Navbar<br />Pure HTML & CSS</h1>
+      <p>
+        Glassmorphism, animated underlines, hover dropdowns, expanding search,
+        notification badge, profile menu and a responsive hamburger — all
+        without JavaScript. Scroll down or resize the window to test it.
+      </p>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+/** @format */
+
+import React from "react";
+import "./Explore.css";
+import { Img } from "../../assets/Img.js";
+
+const Explore = ({Catagory,setCatagory}) => {
+  return (
+        <>
+      <h2 className="mx-5">Shoes Menu</h2>
+      <div className="img-contanir">
+      {Img.map((r) => {
+        return (
+          <div className="img-list" key={r.id} onClick={() => setCatagory(prev=>prev===r.text?"All":r.text)}>
+            
+            <img src={r.image}  width={100}  className={`images ${Catagory===r.text?"active":" "}`} alt={r.text} />
+            <p className="texts">{r.text}</p>
+            </div>
+            
+         
+        );
+      })}
+    </div>
+    </>
+  );
+};
+
+export default Explore;

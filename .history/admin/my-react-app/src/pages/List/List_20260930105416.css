@@ -1,0 +1,152 @@
+.list-page {
+  margin-left: 18vw;
+  padding: 40px 28px 60px;
+  min-height: calc(100vh - 70px);
+  background: linear-gradient(180deg, #f7f7fb 0%, #eef2ff 100%);
+  box-sizing: border-box;
+}
+
+.list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto 28px;
+}
+
+.list-kicker {
+  margin: 0 0 8px;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #ff7a59;
+}
+
+.list-header h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  color: #1f2937;
+}
+
+.list-count {
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(255, 122, 89, 0.12);
+  color: #c85437;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.list-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px;
+}
+
+.list-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.list-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 32px rgba(15, 23, 42, 0.12);
+}
+
+.list-image-wrap {
+  height: 220px;
+  overflow: hidden;
+  background: #f3f4f6;
+}
+
+.list-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.list-body {
+  padding: 18px 18px 20px;
+}
+
+.list-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.list-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: #fff1eb;
+  color: #c25234;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.list-price {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.list-card h3 {
+  margin: 0 0 10px;
+  color: #111827;
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+
+.list-card p {
+  margin: 0;
+  color: #5b6474;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.list-empty {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 26px 20px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid #e5e7eb;
+  color: #475569;
+  font-weight: 600;
+  text-align: center;
+}
+
+@media (max-width: 740px) {
+  .list-page {
+    margin-left: 0;
+    padding: 24px 16px 40px;
+  }
+
+  .list-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .list-grid {
+    grid-template-columns: 1fr;
+  }
+}

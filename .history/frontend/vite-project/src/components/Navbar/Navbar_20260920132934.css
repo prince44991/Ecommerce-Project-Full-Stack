@@ -1,0 +1,57 @@
+.navbar-logo {
+	width: 44px;
+	height: 44px;
+	object-fit: cover;
+	border-radius: 8px;
+}
+
+.navbar-search {
+	max-width: 420px;
+	width: 100%;
+}
+
+.navbar-brand {
+	white-space: nowrap;
+}
+
+.navbar-menu-button {
+	display: none;
+}
+
+.cart-button {
+	min-width: 72px;
+}
+
+.sidebar-links a,
+.sidebar-category {
+	padding: 0.65rem 0.75rem;
+	border-radius: 0.5rem;
+	color: #212529;
+	text-decoration: none;
+}
+
+.sidebar-links a:hover,
+.sidebar-category:hover {
+	background-color: #f1f3f5;
+	color: #0d6efd;
+}
+
+@media (max-width: 991.98px) {
+	.navbar-menu-button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.navbar-search {
+		max-width: none;
+	}
+
+	.navbar-actions {
+		width: 100%;
+	}
+
+	.navbar-actions .btn {
+		flex: 1;
+	}
+}

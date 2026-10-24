@@ -1,0 +1,175 @@
+.list-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 28px 20px;
+  background: linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-left: 300px;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #7c3aed;
+  font-weight: 700;
+  /* margin-left: 20px; */
+}
+.head{
+    margin-left: 60px;
+}
+
+.list-header h2 {
+  margin: 0;
+  font-size: 32px;
+  color: #111827;
+}
+
+.add-btn {
+  border: none;
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  color: white;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(124, 58, 237, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.add-btn:hover {
+  transform: translateY(-1px);
+}
+
+.list-table-wrapper {
+  max-width: 980px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  overflow: hidden;
+}
+
+.list-table-format {
+  display: grid;
+  grid-template-columns: 1.1fr 2fr 1.3fr 1fr 1fr;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 24px;
+}
+
+.list-table-format.title {
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+  color: #475569;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.list-table-format.row {
+  border-bottom: 1px solid #edf2f7;
+  background: white;
+  transition: background 0.2s ease;
+}
+
+.list-table-format.row:last-child {
+  border-bottom: none;
+}
+
+.list-table-format.row:hover {
+  background: #faf5ff;
+}
+
+.list-table-format img {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+  background: #f1f5f9;
+}
+
+.food-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.food-name {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.food-desc {
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.category-pill {
+  margin: 0;
+  display: inline-flex;
+  justify-self: start;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #ede9fe;
+  color: #6d28d9;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.price-tag {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.action-cell {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.row-action {
+  border: none;
+  background: #ecfdf5;
+  color: #047857;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .list-page {
+    padding: 16px;
+  }
+
+  .list-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .list-table-wrapper {
+    overflow-x: auto;
+  }
+
+  .list-table-format {
+    min-width: 620px;
+  }
+}

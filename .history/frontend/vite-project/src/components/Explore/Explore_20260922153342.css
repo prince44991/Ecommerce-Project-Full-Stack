@@ -1,0 +1,20 @@
+.img-contanir{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.img-list{
+    display: flex;
+    align-items: center;
+    gap:20px 0px;
+    text-align: center;
+    margin: 50px;
+    overflow-x: scroll;
+} 
+.images{
+  
+  border-radius: 50%;
+}
+.texts{
+    margin-top: 120px;
+}
